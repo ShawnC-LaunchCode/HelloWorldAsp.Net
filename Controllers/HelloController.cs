@@ -6,18 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HelloWorldAsp.Net.Controllers
 {
+    [Route("/helloshawn/")]
     public class HelloController : Controller
     {
         [HttpGet]
-        [Route("/helloshawn/")]
         public IActionResult Index()
         {
-            string html = "<h1> Hello World!!!</h1>";
+            string html = "<form method='post' action='/helloshawn/'>" + "<input type='text' name='name'/>" + "<input type='submit' value='Greet Me'/>" + "<form/>";
             return Content(html, "text/html");
         }
-        
-        [HttpGet]
-        [Route("/hello/welcome/{name?}")]
+        [HttpGet("welcome/{name?}")]
+        [HttpPost]
         public IActionResult Welcome(string name = "No Name")
         {
             return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
