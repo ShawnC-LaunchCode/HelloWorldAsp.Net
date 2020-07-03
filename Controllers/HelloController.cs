@@ -15,16 +15,16 @@ namespace HelloWorldAsp.Net.Controllers
             string html = "<h1> Hello World!!!</h1>";
             return Content(html, "text/html");
         }
-
+        
         [HttpGet]
-        [Route("/hello/welcome/")]
-        public IActionResult Welcome(string name)
+        [Route("/hello/welcome/{name?}")]
+        public IActionResult Welcome(string name = "No Name")
         {
             return Content("<h1>Welcome to my app, " + name + "!</h1>", "text/html");
         }
            
 
-
+        
 
     }
 }
